@@ -9,7 +9,7 @@ const swordsmanTom = new Swordsman('Tom');
 const daemonKarl = new Daemon('Karl');
 
 // Init new team
-const team = new Team;
+const team = new Team();
 team.add(swordsmanTom);
 
 test('class Team method add() should throw an error trying to add a character that already in team', () => {
@@ -21,9 +21,12 @@ test('class Team method add() should throw an error trying to add a character th
 
 test('class Team method add() should add a team member', () => {
   team.add(bowmanFred);
-  expect(team.has(bowmanFred)).toBe(true);
+  expect(team.members.has(bowmanFred)).toBe(true);
 });
 
 test('team.adAll() method should add multiple characters', () => {
-  expect(true).toBe(true);
+  if (team.members.has(bowmanFred)) team.members.delete(bowmanFred);
+  team.addAll(bowmanFred, daemonKarl);
+  expect(team.members.has(bowmanFred)).toBe(true);
+  expect(team.members.has(daemonKarl)).toBe(true);
 });
