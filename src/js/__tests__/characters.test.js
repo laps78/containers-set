@@ -6,6 +6,30 @@ import Undead from '../undead';
 import Zombie from '../zombie';
 import Daemon from '../daemon';
 
+test('character constructor should throw an extension of short name length', () => {
+  function testLengthError() {
+    const shortName = new Character('a', 'Bowman');
+    return shortName;
+  }
+  expect(testLengthError).toThrowError('Trying to create character with name length out of range!');
+});
+
+test('character constructor should throw an extension of too long name length', () => {
+  function testLengthError() {
+    const shortName = new Character('abrahkadabrah', 'Bowman');
+    return shortName;
+  }
+  expect(testLengthError).toThrowError('Trying to create character with name length out of range!');
+});
+
+test('character constructor should throw an extension of wrong character type', () => {
+  function testLengthError() {
+    const shortName = new Character('Alfred', 'sex-instructor');
+    return shortName;
+  }
+  expect(testLengthError).toThrowError('Trying to create character with type (sex-instructor) not matched the legal type list!');
+});
+
 test('Character should create right character', () => {
   const personConstrucor = new Character('testChar', 'Bowman');
   const personName = {

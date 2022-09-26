@@ -16,5 +16,6 @@ export default class Team {
   toArray() {
     const membersArray = [];
     this.members.forEach((member) => membersArray.push(member));
+    return membersArray;
   }
 }

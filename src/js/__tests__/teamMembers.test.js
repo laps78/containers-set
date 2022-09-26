@@ -30,3 +30,7 @@ test('team.adAll() method should add multiple characters', () => {
   expect(team.members.has(bowmanFred)).toBe(true);
   expect(team.members.has(daemonKarl)).toBe(true);
 });
+
+test('team.toArray() method sould return the array of current team', () => {
+  expect(team.toArray()).toHaveLength(3);
+});
